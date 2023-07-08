@@ -22,6 +22,6 @@ public interface BannersRopository extends JpaRepository<Banners, Long> {
      
      void deleteBannerById(Long id);
      
-     @Query("SELECT u FROM banners u WHERE u.vendedor = ?1")
-      List<Banners> findByEmail(String usuario);
+     @Query("SELECT u FROM Banners u WHERE u.vendedor = ?1")
+     List<Banners> findByEmail(String usuario);
 }

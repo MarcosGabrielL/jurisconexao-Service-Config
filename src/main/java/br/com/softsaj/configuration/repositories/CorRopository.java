@@ -22,6 +22,6 @@ public interface CorRopository extends JpaRepository<Cor, Long> {
      
      void deleteCorById(Long id);
      
-     @Query("SELECT u FROM cores u WHERE u.vendedor = ?1")
+     @Query("SELECT u FROM Cor u WHERE u.vendedor = ?1")
       List<Cor> findByEmail(String usuario);
 }
