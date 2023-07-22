@@ -33,12 +33,14 @@ public class CorService {
                 .orElseThrow(() -> new Exception("Cor by id " + id + " was not found"));
     }
      
-     public  List<Cor> findByEmail(String email) {
-        return rp.findByEmail(email);
+     
+     public  List<Cor> findByEmail(String idvendedor) {
+        return rp.findByVendedor(idvendedor);
     }
      
      public Cor addCor(Cor cinefilo) {
         return rp.save(cinefilo);
+        
     }
      
       public Cor updateCor(Cor cinefilo) {

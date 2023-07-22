@@ -50,7 +50,7 @@ public class CorController {
     }
     
     //GEt Cor
-     @GetMapping("/Cor/{id}")
+     @GetMapping("/Cor/{idvendedor}")
     public ResponseEntity<?> getCienfiloById (@PathVariable("id") Long id
              ,@RequestParam("token") String token) {
         
@@ -85,7 +85,7 @@ public class CorController {
     }
     
     //Update nome,telefone,idade,foto;
-    @PutMapping("/Cor/update/{id}")
+    @PutMapping("/Cor/update/{idvendedor}")
     public ResponseEntity<Cor> updateCor(@PathVariable("id") Long id, @RequestBody Cor newCor
             ,@RequestParam("token") String token) throws Exception {
         
@@ -103,7 +103,7 @@ public class CorController {
     
     
     @Transactional
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{idvendedor}")
     public ResponseEntity<?> deleteCor(@PathVariable("id") Long id
             ,@RequestParam("token") String token) {
         
