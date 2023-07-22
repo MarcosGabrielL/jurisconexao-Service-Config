@@ -25,7 +25,7 @@ public class Cor {
      @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
-     
+ 	@Column(nullable = false, unique = true)
      private String vendedor;
      private String primary_color;
      private String secondary;

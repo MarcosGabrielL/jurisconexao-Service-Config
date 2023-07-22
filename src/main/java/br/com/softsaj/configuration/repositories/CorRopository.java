@@ -20,6 +20,8 @@ public interface CorRopository extends JpaRepository<Cor, Long> {
     
      Optional<Cor> findCorById(Long id);
      
+     //@Query("Exists (select u FROM Cor u WHERE u.vendedor = ?1)")
+     boolean existsByVendedor(String vendedor);
      
      void deleteCorById(Long id);
      

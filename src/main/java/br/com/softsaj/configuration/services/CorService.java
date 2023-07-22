@@ -55,4 +55,8 @@ public class CorService {
                     "Não foi possivel deletar o Cor");
         }
     }
+      
+      public boolean Exists(String idVendedor) {
+    	  return rp.existsByVendedor(idVendedor); 
+      }
 }
