@@ -76,12 +76,22 @@ public class CorController {
     
     @PostMapping("/Cor/add")
     public ResponseEntity<Cor> addCor(@RequestBody Cor movie, @RequestParam("token") String token) {
-    	 Cor newCor = new Cor();
-        if(vs.Exists(movie.getVendedor())) {
-        	newCor = vs.updateCor(movie);
-        }else {
-          newCor = vs.addCor(movie);
-        }
+    	
+    	Cor newCor = new Cor();
+    	if(vs.Exists(movie.getVendedor())) {
+    		try {
+    		Cor Cor = vs.findCorById(movie.getId());
+    		Cor.setPrimary_color(movie.getPrimary_color());
+    		Cor.setSecondary(movie.getSecondary());
+    		newCor = vs.updateCor(Cor);
+    		}catch(Exception e) {
+    			
+    		}
+    	}else {
+    		newCor = vs.addCor(movie);
+    	}
+    	  
+        
         URI uri = ServletUriComponentsBuilder.
                 fromCurrentRequest().path("/Cor/{id}").buildAndExpand(movie.getId()).toUri();
         

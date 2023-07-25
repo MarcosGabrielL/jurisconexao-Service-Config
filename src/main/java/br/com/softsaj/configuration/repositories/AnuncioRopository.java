@@ -24,4 +24,6 @@ public interface AnuncioRopository extends JpaRepository<Anuncio, Long> {
      
      @Query("SELECT u FROM Anuncio u WHERE u.vendedor = ?1")
       List<Anuncio> findByEmail(String usuario);
+
+	boolean existsByVendedor(String vendedor);
 }

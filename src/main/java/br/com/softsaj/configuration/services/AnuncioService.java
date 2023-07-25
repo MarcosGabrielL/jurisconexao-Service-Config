@@ -53,4 +53,8 @@ public class AnuncioService {
                     "Não foi possivel deletar o Anuncio");
         }
     }
+
+	public boolean Exists(String vendedor) {
+		return rp.existsByVendedor(vendedor);
+	}
 }

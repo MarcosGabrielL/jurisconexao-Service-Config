@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.softsaj.configuration.models.Anuncio;
+import br.com.softsaj.configuration.models.Cor;
 import br.com.softsaj.configuration.services.AnuncioService;
 
 
@@ -77,11 +78,24 @@ public class AnuncioController {
     @PostMapping("/Anuncio/add")
     public ResponseEntity<Anuncio> addAnuncio(@RequestBody Anuncio movie, @RequestParam("token") String token) {
         
-        Anuncio newAnuncio = vs.addAnuncio(movie);
+        Anuncio Anuncio = new Anuncio();
+    	if(vs.Exists(movie.getVendedor())) {
+    		try {
+    			Anuncio newAnuncio = vs.findAnuncioById(movie.getId());
+    			newAnuncio.setTitulo(movie.getTitulo());
+    			newAnuncio.setSubtitulo(movie.getSubtitulo());
+    			Anuncio = vs.addAnuncio(newAnuncio);
+    		}catch(Exception e) {
+    			
+    		}
+    	}else {
+    		Anuncio = vs.addAnuncio(movie);
+    	}
+        
         URI uri = ServletUriComponentsBuilder.
                 fromCurrentRequest().path("/Anuncio/{id}").buildAndExpand(movie.getId()).toUri();
         
-        return new ResponseEntity<>(newAnuncio, HttpStatus.CREATED);
+        return new ResponseEntity<>(Anuncio, HttpStatus.CREATED);
     }
     
     //Update nome,telefone,idade,foto;

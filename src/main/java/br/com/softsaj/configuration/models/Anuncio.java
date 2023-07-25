@@ -69,6 +69,11 @@ public class Anuncio {
 		this.titulo = titulo;
 		this.subtitulo = subtitulo;
 	}
+	
+	public Anuncio() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Banners [id=" + id + ", vendedor=" + vendedor + ", id_imagem=" + id_imagem + ", titulo=" + titulo
